@@ -1,6 +1,7 @@
-# McMahon_Metis
+# Brian's Data Space
 
 ## Project 1: Analyzing NYC MTA subway and demographic data to optimize street team deployment
+19 January 2018
 ### Summary
 During the four days of the first week (due to MLK Jr. Day) of Metis' Winter Data Science Bootcamp 2018, we were tasked with optimizing deployment of a street team to raise awareness of a summer gala for Women Tech Women Yes (WTWY) in New York City. 
 
@@ -16,6 +17,7 @@ Our approach was to analyze two sets of data, consisting of:
 ### Approach
 The complete Jupyter Notebook, including both MTA subway and demographic data analyses, can be found here[link].  
 
+#### MTA Approach
 Our approach to the MTA Subway Data analysis was as follows:
 1. **Import data.** We used full calendar year 2016 turnstile data.  
 2. **Clean data.** Extra spaces were parsed, unnecessary columns were removed, etc.  
@@ -24,6 +26,20 @@ Our approach to the MTA Subway Data analysis was as follows:
 5. **Sort by traffic.** Traffic aggregated by station was sorted to determine the busiest stations.  Traffic is a metric for general activity, calculated as the sum of entries and exits for each turnstile.  
 6. **Plot time series of busiest stations.** The top five stations were further analyzed by plotting the full year time series for each.  
 
-#### 
+#### MTA Findings
+Our results shows that the top MTA subway stations generally had the following characteristics:
+- central Manhattan
+- multiline subway hubs
+
+The top 20 stations by traffic is as follows:
+![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/Top20.png "Top 20 Stations")
+
+As you can see, the top 5 stations consist of:
+1. Penn Station
+2. 23rd Street
+3. Herald Square
+4. Times Square
+5. Grand Central
+
 
 
