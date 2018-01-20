@@ -1,3 +1,4 @@
+.gitignore
 .ipynb_checkpoints/
 Turnstile_Usage_Data__2016.csv
 Archive/
