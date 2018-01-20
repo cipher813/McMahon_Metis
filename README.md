@@ -15,7 +15,7 @@ Our approach was to analyze two sets of data, consisting of:
 --  inspired by MuonNeutrino's post on Mapping New York City Census Data(https://www.kaggle.com/muonneutrino/mapping-new-york-city-census-data/data) on Kaggle.com.
 
 ### Approach
-The complete Jupyter Notebook, including both MTA subway and demographic data analyses, can be found here[link].  
+The complete Jupyter Notebook, including both MTA subway and demographic data analyses, can be found [here](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/P1_MTA.ipynb).  
 
 #### MTA Approach
 Our approach to the MTA Subway Data analysis was as follows:
