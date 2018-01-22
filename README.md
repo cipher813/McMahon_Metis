@@ -26,7 +26,7 @@ Our approach to the MTA Subway Data analysis was as follows:
 5. **Sort by traffic.** Traffic aggregated by station was sorted to determine the busiest stations.  Traffic is a metric for general activity, calculated as the sum of entries and exits for each turnstile.  
 6. **Plot time series of busiest stations.** The top five stations were further analyzed by plotting the full year time series for each.  
 
-#### MTA Findings
+#### High Traffic MTA Subway Station Locations
 Our results shows that the top MTA subway stations generally had the following characteristics:
 - central Manhattan
 - multiline subway hubs
@@ -47,17 +47,31 @@ As you can see, the top 5 stations consist of:
 With a quick comparison to online data, such as at [web.mta.info](http://web.mta.info/nyct/facts/ffsubway.htm), we are fairly comfortable with these results. However, as this was a project completed from start to finish in less than four days, we have a list of items to follow up on at a later time.  One of these would be to further refine the filtering of outliers from these results.  For instance, there is a spike in March in all of the above charts which we would like to investigate further.  
 
 Diving deeper into these stations:
-![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/34TH.png "Herald Square 34th Street Daily Traffic, 2016")
-![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/GRD.png "Grand Central 42nd Street Daily Traffic, 2016")
 ![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/Penn.png "Penn Station 34th Street Daily Traffic, 2016")
-![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/TSQ.png "Times Square 42nd  Street Daily Traffic, 2016")
+
+Penn Station claimed the top spot in terms of heaviest traffic in a single station.  As you can see, its weekly traffic is quite consistent.  
+
 ![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/23RD.png "23rd Street Daily Traffic, 2016")
+
+23rd Street was the second busiest in our investigation.  Also a central location within Manhattan.  
+
+![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/34TH.png "Herald Square 34th Street Daily Traffic, 2016")
+
+Herald Square claimed the third spot in our analysis, another central Manhattan hub.  
+
+![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/TSQ.png "Times Square 42nd  Street Daily Traffic, 2016")
+
+Times Square, per our analysis, is the fourth busiest subway station in the NYC metro area.  
+
+![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/GRD.png "Grand Central 42nd Street Daily Traffic, 2016")
+
+Grand Central Station, another important central Manhattan hub, was the fifth-busiest in our analysis.  
 
 As you can see, on a full system basis all usage patterns are quite similar and consistent. This is likely due to the fact that these are the top stations by usage and as such capacity is more or less consistently reached on a daily basis.  We can clearly see the weekly dip on the weekends, and a large spike in March which should be investigated further.  
 
 Once we had mapped out the top stations, we then took a dive into the demographic data for each top station to confirm that demographics were favorable for each.  
 
-### Demographic Validation
+### Favorable Demographic Findings
 Using the [American Community Survey data](https://www.kaggle.com/muonneutrino/mapping-new-york-city-census-data/data) as compiled by MuonNeutrino on Kaggle, analyzed demographics of busiest stations.  We then combined census location data from the [U.S. Census Bureau](https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml).
 We zoomed in on the highest traffic stations and close proximity to analyze average demographics
 utilizing MuonNeutrino's mapping functionality to map demographics.
@@ -70,9 +84,20 @@ We determined the following characteristics to make up the target profile for th
 
 Demographic data for the NYC metro area, mapped to the identified high-traffic stations, is as follows:
 ![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/IncomeMap.png "Household Income")
+
+Income tends to be high in central Manhattan, including within proximity to our busiest five NYC metro subway stations.  
+
 ![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/GenderMap.png "Gender")
+
+NYC metro, and especially Manhattan, boasts a majority (>50%) female population.  
+
 ![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/TransportMap.png "Public Transportation Usage")
-![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/TechHubMap.png "NYC Tech Hubs")
+
+Public transportation usage, such as use of the subway, is popular in central Manhattan.  
+
+[chart]: https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/TechHubMap.png "NYC Tech Hubs"
+
+Central Manhattan is an important technology and business hub.  
 
 In summary, we confirmed that each of the top five stations by traffic were primarily utilized by favorable demographics, with points of note as follows:
 
