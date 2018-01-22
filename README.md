@@ -1,6 +1,6 @@
 # Brian's Data Space
 
-[19 January 2018: Project Benson](https://github.com/cipher813/McMahon_Metis/docs/P1blog.md).
+[19 January 2018: Project Benson](https://github.com/cipher813/McMahon_Metis/blob/master/docs/P1blog.md).
 
 ## Project 1: Analyzing NYC MTA subway and demographic data to optimize street team deployment
 19 January 2018
