@@ -2,6 +2,11 @@
 
 ## Project 1: Analyzing NYC MTA subway and demographic data to optimize street team deployment
 19 January 2018
+
+### Problem Statement
+
+[to add]
+
 ### Summary
 During the four days of the first week (due to MLK Jr. Day) of Metis' Winter Data Science Bootcamp 2018, we were tasked with optimizing deployment of a street team to raise awareness of a summer gala for Women Tech Women Yes (WTWY) in New York City.
 
