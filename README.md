@@ -32,7 +32,7 @@ Our results shows that the top MTA subway stations generally had the following c
 - multiline subway hubs
 
 The top 20 stations by traffic is as follows:
-![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/Top20.png "Top 20 Stations")
+![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/Top20.png "Top 20 Stations")
 
 System traffic:
 ![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/SystemTraffic.png "System Traffic")
@@ -95,7 +95,7 @@ NYC metro, and especially Manhattan, boasts a majority (>50%) female population.
 
 Public transportation usage, such as use of the subway, is popular in central Manhattan.  
 
-[chart]: https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/TechHubMap.png "NYC Tech Hubs"
+![alt text](ttps://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/TechHubMap.png "NYC Tech Hubs")
 
 Central Manhattan is an important technology and business hub.  
 
