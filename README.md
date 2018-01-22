@@ -67,3 +67,36 @@ We determined the following characteristics to make up the target profile for th
 2. High female population
 3. High % use the NYC Subway
 4. Business / tech hubs
+
+Demographic data for the NYC metro area, mapped to the identified high-traffic stations, is as follows:
+![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/IncomeMap.png "Household Income")
+![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/GenderMap.png "Gender")
+![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/TransportMap.png "Public Transportation Usage")
+![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/TechHubMap.png "NYC Tech Hubs")
+
+In summary, we confirmed that each of the top five stations by traffic were primarily utilized by favorable demographics, with points of note as follows:
+
+**High Traffic Stations**   **Demographic Highlights**
+Penn Station, 34th St       High median household income ($159,821)
+Herald Square, 34th St      Near tech hubs
+Times Square, 42nd St       High transit percentage (37.2%)
+Grand Central, 42nd St      Near tech hubs
+23rd St                     High female population (60.7%), income ($135,750) and transit percentage (48.4%)
+
+## Conclusion
+Fortunately for WTWY's ambitions, NYC's easy to access traffic hubs also exhibit favorable demographics: high income, tech/business savvy and >50% female.  
+
+It is recommended to focus the WTWY's street team efforts on key central hubs of Manhattan:
+1. Penn Station
+2. Herald Square
+3. Times Square
+4. Grand Central
+5. 23rd Street
+
+## Next Steps
+Again, given the short project timeframe, there are a few more pieces of analysis that we would like to incorporate upon additional time allocation to the project.  These include:
+- further iron out any outliers
+- analyze data for specific temporal trends (such as weekday vs weekend traffic, and traffic by time of day)
+- demographic "scorecard" for each station, where each demographic feature is weighted within a comprehensive analysis of each station  
+
+The original presentation slides are available [here](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/WTWY%20Street%20Team%20Deployment%20Analysis.pdf).
