@@ -1,11 +1,13 @@
-# Brian's Data Space
-
-## Project 1: Analyzing NYC MTA subway and demographic data to optimize street team deployment
+# Project 1: Analyzing NYC MTA subway and demographic data to optimize street team deployment
 19 January 2018
 
 ### Problem Statement
 
-[to add]
+At the request of Women Tech Women Yes (WTWY), an NYC-based non-profit focused on promoting women in tech,
+our team has been tasked with optimizing the deployment of WTWY street teams to subway stations to raise
+awareness of an upcoming summer gala that WTWY would like to promote. Street team deployment optimization
+is to be done via analysis of NYC MTA subway traffic data as well as demographic data on the population in
+proximity to these stations.  
 
 ### Summary
 During the four days of the first week (due to MLK Jr. Day) of Metis' Winter Data Science Bootcamp 2018, we were tasked with optimizing deployment of a street team to raise awareness of a summer gala for Women Tech Women Yes (WTWY) in New York City.
@@ -100,7 +102,7 @@ NYC metro, and especially Manhattan, boasts a majority (>50%) female population.
 
 Public transportation usage, such as use of the subway, is popular in central Manhattan.  
 
-![alt text](ttps://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/TechHubMap.png "NYC Tech Hubs")
+![alt text](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/charts/TechHubMap.png "NYC Tech Hubs")
 
 Central Manhattan is an important technology and business hub.  
 
@@ -124,7 +126,7 @@ It is recommended to focus the WTWY's street team efforts on key central hubs of
 5. 23rd Street
 
 ## Next Steps
-Again, given the short project timeframe, there are a few more pieces of analysis that we would like to incorporate upon additional time allocation to the project.  These include:
+There are a few more pieces of analysis that we would like to incorporate upon additional time allocation to the project.  These include:
 - further iron out any outliers
 - analyze data for specific temporal trends (such as weekday vs weekend traffic, and traffic by time of day)
 - demographic "scorecard" for each station, where each demographic feature is weighted within a comprehensive analysis of each station  
