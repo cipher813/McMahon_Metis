@@ -15,11 +15,11 @@ During the four days of the first week (due to MLK Jr. Day) of Metis' Winter Dat
 We assumed a modest street team head count, and thus set out to identify the top NYC subway stations which demonstrated both high traffic and favorable demographics.
 
 Our approach was to analyze two sets of data, consisting of:
-- MLA Turnstile data from data.ny.gov(https://data.ny.gov/Transportation/Turnstile-Usage-Data-2016/ekwu-khcy); and
+- MLA Turnstile data from [data.ny.gov](https://data.ny.gov/Transportation/Turnstile-Usage-Data-2016/ekwu-khcy); and
 - Demographic data, which was an aggregatation of data from:
---  the U.S. Census Bureau(https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml);
---  the Federal Communications Commission(https://www.fcc.gov/general/census-block-conversions-api); and
---  inspired by MuonNeutrino's post on Mapping New York City Census Data(https://www.kaggle.com/muonneutrino/mapping-new-york-city-census-data/data) on Kaggle.com.
+--  the [U.S. Census Bureau](https://factfinder.census.gov/faces/nav/jsf/pages/index.xhtml);
+--  the [Federal Communications Commission](https://www.fcc.gov/general/census-block-conversions-api); and
+--  inspired by MuonNeutrino's post on [Mapping New York City Census Data](https://www.kaggle.com/muonneutrino/mapping-new-york-city-census-data/data) on Kaggle.com.
 
 ### Approach
 The complete Jupyter Notebook, including both MTA subway and demographic data analyses, can be found [here](https://github.com/cipher813/McMahon_Metis/blob/master/Project_1/P1_MTA.ipynb).  
