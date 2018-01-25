@@ -12,7 +12,6 @@ def to_date(datestring):
     return date
 
 coinmarketcap_hist = {}
-# mkt_cap = {}
 date_list = []
 start_date = 20130428
 end_date = datetime.datetime.now()
