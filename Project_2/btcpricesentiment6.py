@@ -43,8 +43,8 @@ i = 0
 BTCTweets = {}
 ticks = ['BTC','ETH','LTC','EOS','ADA']
 sleep_time = 60*5 # 5 minutes
-fil_mc = 'btcpricesentiment_mc8.json'
-fil_txt = 'btcpricesentiment_txt8.json'
+fil_mc = 'btcpricesentiment_mc9.json'
+fil_txt = 'btcpricesentiment_txt9.json'
 
 while i < 100000:
     btcpricesentiment_mc = {}
