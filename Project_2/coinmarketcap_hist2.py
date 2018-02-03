@@ -55,6 +55,6 @@ for date in date_list:
 
     coinmarketcap_hist[date] = date_data
 
-with open('data/coinmarketcap_hist2.json', 'w') as fp:
+with open('coinmarketcap_hist1.json', 'w') as fp:
     json.dump(coinmarketcap_hist, fp)
-print('data/coinmarketcap_hist1.json has been updated!')
+print('coinmarketcap_hist1.json has been updated!')
