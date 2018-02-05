@@ -50,3 +50,17 @@ From this set of features, I was able to narrow down to the following for use in
 ![](charts/OLS.png "3 Features contribute to R2 of ~97%")
 
 ![](charts/modelpairplot.png "Correlation")
+
+![](charts/modelpairplot.png "Correlation")
+
+![](charts/googlesearchinterest.png "Bitcoin Price vs. Google Search Interest")
+
+![](charts/interestvsbtcprice.png "Bitcoin Price vs. Google Search Interest Regression")
+
+![](charts/nasdaq.png "Bitcoin Price vs. Nasdaq Composite Index")
+
+![](charts/nasdaqvsbtcprice.png "Bitcoin Price vs. Nasdaq Composite Index Regression")
+
+![](charts/logpredictedvsactual.png "Bitcoin Price, Model Prediction vs. Actual Regression (log)")
+
+![](charts/predictedvsactual.png "Bitcoin Price, Model Prediction vs. Actual Regression")
