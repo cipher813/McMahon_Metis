@@ -98,4 +98,4 @@ There are several areas in which this analysis could be further improved.  Most 
 
 I would also like to incorporate a mechanism to gauge sentiment analysis derived from Twitter against the price of Bitcoin over a period of time.  I had sought to include this component into the existing model, but was only able to gather real-time data and could not identify sufficient compelling insights due to the short period of time collected (~ 1 week) due primarily to noise within the data.  To collect this information the Twitter API, and TextBlob for sentiment analysis of each tweet, was utilized.
 
-__My full set of presentation slides, including appendices, are available [here](https://github.com/cipher813/McMahon_Metis/blob/master/Project_2/20180202_Bitcoin_LR_Presentation.pdf).  I welcome any questions or comments at cipher813@gmail.com.__
+_My full set of presentation slides, including appendices, are available [here](https://github.com/cipher813/McMahon_Metis/blob/master/Project_2/20180202_Bitcoin_LR_Presentation.pdf).  I welcome any questions or comments at cipher813@gmail.com._
