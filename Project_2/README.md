@@ -1,7 +1,5 @@
-# Project 2: Bitcoin Linear Regression: Correlation Exploration
+# Bitcoin Linear Regression: Correlation Exploration
 2 February 2018
-
-
 
 As you may know, Bitcoin is a decentralized digital currency notorious for extreme price volatility.  To tame this beast, I set out to build a multivariable linear regression model which can be used to predict the price of Bitcoin.  In this post, I will:
 
@@ -94,3 +92,10 @@ In this analysis, the price of Bitcoin has been found to be a function of:
 Google search interest closely tracks the price of Bitcoin and may even be a prime candidate as a leading indicator of the digital currency.  
 
 Nasdaq is also historically correlated with the price of Bitcoin; however, we will want to keep watching this relationship after Nasdaq experiences bearish trends / downside pressure upon the stock market index.
+
+### Next Steps
+There are several areas in which this analysis could be further improved.  Most importantly, I plan to reconfigure this model as a time series analysis complete with a price prediction over a certain time window.  The key difference in the model would be to use non-randomized data when determining the train/test split.  The model would be trained on the earliest historical data in the set and tested on the most recent few months. This model could then proceed to extrapolate the predicted price of Bitcoin over a period of time, such as the following month, quarter or even year.  
+
+I would also like to incorporate a mechanism to gauge sentiment analysis derived from Twitter against the price of Bitcoin over a period of time.  I had sought to include this component into the existing model, but was only able to gather real-time data and could not identify sufficient compelling insights due to the short period of time collected (~ 1 week) due primarily to noise within the data.  To collect this information the Twitter API, and TextBlob for sentiment analysis of each tweet, was utilized.
+
+__My full set of presentation slides, including appendices, are available [here](https://github.com/cipher813/McMahon_Metis/blob/master/Project_2/20180202_Bitcoin_LR_Presentation.pdf).  I welcome any questions or comments at cipher813@gmail.com.__

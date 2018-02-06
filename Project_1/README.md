@@ -1,4 +1,4 @@
-# Project 1: Analyzing NYC MTA subway and demographic data to optimize street team deployment
+# Analyzing NYC MTA subway and demographic data to optimize street team deployment
 19 January 2018
 
 ### Problem Statement
