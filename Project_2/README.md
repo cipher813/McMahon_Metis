@@ -83,6 +83,9 @@ Adjusting for the log, we now see the predictive price results of our model.  Th
 
 To interpret this, you would essentially feed the metrics of the three features into the model, and it will then provide a prediction of the price of Bitcoin.  
 
+### Further Thoughts
+Regularization was considered but not ultimately incorporated into the model.  This is because the model only has three features with a very high accuracy as gauged by an R2 score of ~97%.  While Ridge, Lasso and ElasticNet regularization methods were evaluated within the model, it was not deemed to improve the performance of the model.  
+
 ### Key Insights / Takeaways
 In this analysis, the price of Bitcoin has been found to be a function of:
 1. Google search interest
