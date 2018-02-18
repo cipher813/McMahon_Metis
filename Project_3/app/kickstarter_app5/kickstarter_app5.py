@@ -1,5 +1,6 @@
 import flask
 from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
 import numpy as np
 import pandas as pd
 
@@ -7,12 +8,14 @@ import pandas as pd
 
 # Read the scientific data on breast cancer survival,
 # Build a LogisticRegression predictor on it
-patients = pd.read_csv("haberman.data", header=None)
-patients.columns=['age','year','nodes','survived']
-patients=patients.replace(2,0)  # The value 2 means death in 5 years, update to more common 0
+df = pd.read_csv("../../data/kickstarter_data_ds2_app1.csv", header=None)
+df.columns=['state','goal','pledged','backers']
+# patients=patients.replace(2,0)  # The value 2 means death in 5 years, update to more common 0
 
-X = patients[['age','year','nodes']]
-Y = patients['survived']
+X = df[['goal','pledged','backers']]
+# scaler = StandardScaler().fit(X)
+# X = scaler.transform(X)
+Y = df['state']
 PREDICTOR = LogisticRegression().fit(X,Y)
 
 

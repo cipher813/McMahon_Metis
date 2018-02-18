@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Prediction Wizard</title>
+    <title>Kickstarter Prediction</title>
     <link rel="stylesheet" href="static/d3.slider.css" />
     <style>
 
@@ -32,11 +32,11 @@
      }
 
      .bar {
-       fill: #FF75A3;
+       fill: green;
      }
 
      span {
-       color: steelblue;
+       color: orange;
      }
 
     </style>
@@ -46,7 +46,7 @@
 
 
     <div id="chart_area" class="wrapper">
-      <h2>5 Year Survival Chance After Breast Cancer Surgery</h2>
+      <h2>Probability of a Kickstarter Campaign Success</h2>
       <p class="space"></p>
       <div id="bar_chart">
       </div>
@@ -54,14 +54,14 @@
 
     <div id="sliders" class="wrapper">
 
-      <h2 class="feature">Age: <span id="age">25</span></h2>
-      <div id="age_slider"></div>
+      <h2 class="feature">US$ Goal: <span id="goal">500</span></h2>
+      <div id="goal_slider"></div>
 
-      <h2 class="feature">Year: <span id="year">2010</span></h2>
-      <div id="year_slider"></div>
+      <h2 class="feature">US$ Pledged: <span id="pledged">500</span></h2>
+      <div id="pledged_slider"></div>
 
-      <h2 class="feature">Number of malignant lymph nodes: <span id="nodes">1</span></h2>
-      <div id="nodes_slider"></div>
+      <h2 class="feature">Number of Backers: <span id="backers">10</span></h2>
+      <div id="backers_slider"></div>
 
     </div>
 
@@ -74,10 +74,10 @@
 
      <!-- SINGLE BAR CHART -->
 
-     var current_age = 25;
-     var current_year = 2010;
-     var current_nodes = 1;
-     var current_risk = 97.0;
+     var current_goal = 500;
+     var current_pledged = 500;
+     var current_backers = 10;
+     var current_risk = 80.3;
 
      var chart = d3.select("#bar_chart")
                    .append("svg:svg")
@@ -109,16 +109,18 @@
 
 
      <!-- FUNCTION TO GET CHANCE FROM YOUR PREDICTOR WITH AJAX AND CHANGE BAR  HEIGHT -->
-     function getAndDrawChance(age, year, nodes){
+     function getAndDrawChance(goal, pledged, backers){
 
-       year = year - 1900;
+       // goal = goal - 2000;
+       // backers = backers - 30;
+       // pledged = pledged + 30;
        $.ajax({
          type: "POST",
          contentType: "application/json; charset=utf-8",
          url: "/score",
          dataType: "json",
          async: true,
-         data: "{\"example\": ["+age+","+year+","+nodes+"]}",
+         data: "{\"example\": ["+goal+","+pledged+","+backers+"]}",
          success: function (data) {
            var chance = 100 * data["score"];
            d3.select("#chancebar")
@@ -135,47 +137,50 @@
 
      <!-- SLIDERS -->
 
-     d3.select('#age_slider')
+     d3.select('#goal_slider')
        .call(
          d3.slider()
-           .value(current_age)
+           .value(current_goal)
+           .min(0)
+           .max(1000)
            .step(1)
            .axis(true)
            .on("slide", function(evt,value) {
-             d3.select('#age').text(value);
-             current_age = value;
-             getAndDrawChance(current_age, current_year, current_nodes)
+             d3.select('#goal').text(value);
+             current_goal = value;
+             getAndDrawChance(current_goal, current_pledged, current_backers)
            }
            )
        );
 
-     d3.select('#year_slider')
+     d3.select('#pledged_slider')
        .call(
          d3.slider()
-           .value(current_year)
-           .min(1950)
-           .max(2010)
+           .value(current_pledged)
+           .min(0)
+           .max(1000)
            .step(1)
            .axis(true)
            .on("slide", function(evt,value) {
-             d3.select('#year').text(value);
-             current_year = value;
-             getAndDrawChance(current_age, current_year, current_nodes)
+             d3.select('#pledged').text(value);
+             current_pledged = value;
+             getAndDrawChance(current_goal, current_pledged, current_backers)
            }
            )
        );
 
-     d3.select('#nodes_slider')
+     d3.select('#backers_slider')
        .call(
          d3.slider()
-           .value(current_nodes)
-           .max(40)
+           .value(current_backers)
+           .min(0)
+           .max(200)
            .step(1)
            .axis(true)
            .on("slide", function(evt,value) {
-             d3.select('#nodes').text(value);
-             current_nodes = value;
-             getAndDrawChance(current_age, current_year, current_nodes)
+             d3.select('#backers').text(value);
+             current_backers = value;
+             getAndDrawChance(current_goal, current_pledged, current_backers)
            }
            )
        );
