@@ -94,7 +94,7 @@ var tooltip = d3.select("body").append("div")
     .style("opacity", 0);
 
 // load data
-d3.csv("kickstarter_bostockscatterplot.csv", function(error, data) {
+d3.csv("/static/kickstarter_bostockscatterplot.csv", function(error, data) {
 
   // change string (from CSV) into number format
   data.forEach(function(d) {
