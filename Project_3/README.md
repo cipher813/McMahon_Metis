@@ -1,14 +1,19 @@
 # Kickstarter Prediction Model
 ### Folder contents:
-*Presentation*
+**Presentation**
+
 3. Kickstarter Prediction Model slides.  
 
-*Webapps*
+
+**Webapps**
+
 3.A. Flask/D3 visualization of impact of a Kickstarter staff recommendation on success rate, by subcategory.
 
 3.B. Flask app predicting success of a campaign based on US$ goal US$ pledged and number of backers.
 
-*Jupyter Notebooks*
+
+**Jupyter Notebooks**
+
 3.1. Export to SQL data prep.
 
 3.2. Exploratory Data Analysis.
