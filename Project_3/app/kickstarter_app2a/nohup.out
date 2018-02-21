@@ -19,3 +19,9 @@
 127.0.0.1 - - [20/Feb/2018 20:09:05] "GET / HTTP/1.1" 200 -
 127.0.0.1 - - [20/Feb/2018 20:24:31] "GET / HTTP/1.1" 200 -
 127.0.0.1 - - [20/Feb/2018 20:36:25] "GET / HTTP/1.1" 200 -
+ * Detected change in '/Volumes/BC_Clutch/Dropbox/Programming/BootCamps/Metis/00Bootcamp/McMahon_Metis/Project_3/app/kickstarter_app2a/kickstarter_app2a.py', reloading
+ * Restarting with stat
+  File "kickstarter_app2a.py", line 1
+    <<<<<<< HEAD
+     ^
+SyntaxError: invalid syntax
