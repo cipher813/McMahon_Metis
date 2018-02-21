@@ -94,7 +94,7 @@ var tooltip = d3.select("body").append("div")
     .style("opacity", 0);
 
 // load data
-d3.csv("kickstarter_bostockscatterplot.csv", function(error, data) {
+d3.csv("/static/kickstarter_bostockscatterplot.csv", function(error, data) {
 
   // change string (from CSV) into number format
   data.forEach(function(d) {
@@ -185,7 +185,7 @@ d3.csv("kickstarter_bostockscatterplot.csv", function(error, data) {
 <ul>
   <li>Chart represents the impact that a staff pick has on the success rate of a subcategory</li>
   <li>Each of ~160 subcategories represented by colored dot; color correlates to main category</li>
-  <li>x-axis represents staff picks as % of total</li>
+  <li>x axis represents staff picks as % of total</li>
   <li>y axis represents success rate as % of total</li>
   <!-- <li>Subs along the y axis, such as Gaming Hardware, are never picked by staff</li>
   <li>Subs along the top border, such as painting, have a 100% success rate, regardless of staff pick</li>
