@@ -21,6 +21,9 @@ h1 {
   width: 90%;
   color: darkgreen;
 }
+p {
+  font-style: italic;
+}
 ul {
   list-style-type: square;
   font-size: 2em;
@@ -94,7 +97,7 @@ var tooltip = d3.select("body").append("div")
     .style("opacity", 0);
 
 // load data
-d3.csv("kickstarter_bostockscatterplot.csv", function(error, data) {
+d3.csv("/static/kickstarter_bostockscatterplot.csv", function(error, data) {
 
   // change string (from CSV) into number format
   data.forEach(function(d) {
@@ -185,12 +188,13 @@ d3.csv("kickstarter_bostockscatterplot.csv", function(error, data) {
 <ul>
   <li>Chart represents the impact that a staff pick has on the success rate of a subcategory</li>
   <li>Each of ~160 subcategories represented by colored dot; color correlates to main category</li>
-  <li>x-axis represents staff picks as % of total</li>
+  <li>x axis represents staff picks as % of total</li>
   <li>y axis represents success rate as % of total</li>
   <!-- <li>Subs along the y axis, such as Gaming Hardware, are never picked by staff</li>
   <li>Subs along the top border, such as painting, have a 100% success rate, regardless of staff pick</li>
   <li>Pottery, at the far right, is regularly a staff pick, but success rate remains relatively low</li> -->
 
 </ul>
+<p>Data from July 2017 to January 2018.</p>
 </body>
 </html>
