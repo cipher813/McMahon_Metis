@@ -27,10 +27,10 @@ def as_python_object(dct):
     return dct
 
 # Twitter API Information
-consumer_key = 'vZ2rePzW00X6Mr2NVbxcRUSMm'
-consumer_secret = 'XkT96BYG7RBJKBdKP2uBl2z4WzPVjTbH155bUldCDT1xVdGiVM'
-access_token = '66541059-BLlhwk0IE57qhXQux6XjCKOeVy5MC8NxWR6yaoKQa'
-access_secret = 'RWiaKbiPXVZwRslwr9KEWd6ELn4MvEn6eCRSo8npkkZ8t'
+consumer_key = '<insert>'
+consumer_secret = '<insert>'
+access_token = '<insert>'
+access_secret = '<insert>'
 
 auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_secret)
