@@ -5,15 +5,15 @@ to draw distinctions amongst six different categories of toxic language.
 
 **Presentation**
 
-4.0 Toxic Language Classification slides.  
+4.0 Toxic Language Classification Presentation slides.  
+
 
 
 **Jupyter Notebooks**
 
 4.1. Data preprocessing.
 
-4.2. K-Means Clustering and T-SNE Analysis (dimensionally reduced by TF-IDF/NMF).  
-     This is the main analysis.
+4.2. K-Means Clustering and T-SNE Analysis (dimensionally reduced by TF-IDF/NMF). This is the main analysis.
 
 4.3. LDA supporting analysis.
 
