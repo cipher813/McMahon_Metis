@@ -16,6 +16,7 @@ def download_midis(start_page, end_page, base_url, end_url, abs_filepath):
     midi_dict = {}
     for num in range(start_page,end_page):
         url = base_url + str(num) + end_url
+        print(url)
         try:
             response = requests.get(url)
         except Exception as e:
@@ -60,7 +61,9 @@ def download_midis(start_page, end_page, base_url, end_url, abs_filepath):
             urllib.request.urlretrieve (v, filepath)
             r = requests.get(v)
             print("{}: {}".format(k,v))
-        time.sleep(60)
+        sleep_time = 60*5
+        print("Sleeping {} seconds".format(sleep_time))
+        time.sleep(60*10)
     return midi_dict
 
 midi_dict = download_midis(start_page, end_page, base_url, end_url, abs_filepath)
