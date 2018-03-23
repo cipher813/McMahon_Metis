@@ -6,11 +6,11 @@ import urllib.request
 import time
 
 base_url = 'http://www.midiworld.com/search/'
-end_url = '/?q=pop'
-abs_filepath = '/media/cipher000/DATA/Music/MidiWorld/'
+end_url = '/?q=video%20game%20themes'
+abs_filepath = '/home/ubuntu/Music/MidiWorld/VideoGame/'
 
-start_page = 20
-end_page = 100
+start_page = 1
+end_page = 7
 
 def download_midis(start_page, end_page, base_url, end_url, abs_filepath):
     midi_dict = {}
