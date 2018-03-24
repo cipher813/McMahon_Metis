@@ -1,3 +1,4 @@
+.gitignore
 Project_1/archive/
 Project_2/.ipynb_checkpoints/
 Project_2/archive/
@@ -25,10 +26,8 @@ Project_5/midi_songs/
 Project_5/notebooks/.ipynb_checkpoints/
 Project_5/weights/
 Project_5/output/
-Project_5/notebooks/archive/
 Challenges/archive/
 Challenges/data/
 Challenges/drafts/
 Challenges/.ipynb_checkpoints/
 Investigations/1_StyleTransfer/fast-style-transfer/
-
