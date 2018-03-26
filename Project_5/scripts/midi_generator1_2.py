@@ -2,7 +2,7 @@ from music21 import converter, instrument, note, chord, stream
 import numpy as np
 import pickle
 
-import weight_generator1_1 as wg
+import weight_generator1_2 as wg
 
 def midi_generator(notes, sequence_length, epochs, batch_size, timestamp, output_name, weights_file, output_notes_file,notes_generated,sound):
     assert weights_file != None

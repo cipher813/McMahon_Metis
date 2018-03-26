@@ -1,13 +1,13 @@
 # if to force run on CPU; else comment out
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+# os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
 from music21 import converter, instrument, note, chord, stream
 from datetime import datetime
 import sys
 from keras import backend as K
-import weight_generator1_1 as wg
-import midi_generator1_1 as mg
+import weight_generator1_2 as wg
+import midi_generator1_2 as mg
 import re
 import pickle
 
@@ -17,16 +17,17 @@ print("Available GPUs: {}".format(K.tensorflow_backend._get_available_gpus()))
 # Hyperparameters
 sequence_length = 100 # the LSTM RNN will consider this many notes
 epochs = 1
-batch_size = 64
+batch_size = 128 # from 64
 notes_generated = 500 # output will contain this many notes
-midi_quantity = 300 # number of midi files to load from dataset
+midi_quantity = 5000 # number of midi files to load from dataset
 sound = instrument.Piano() # declare a music21 package instrument
 
 start_time = datetime.now()
 timestamp = re.sub(r'[-: ]','',str(start_time).split('.')[0])[:-2]
 
-midi_files = '../data/MidiWorld/Pop/AceofBase-Sign.mid'
-output_name = midi_files.split('/')[-2]
+# midi_files = '/media/cipher000/DATA/Music/Tadpole/CelticMidis/30BOTHUG.MID'
+midi_files = '../data/Music/Tadpole/**/*.MID'
+output_name = midi_files.split('/')[-3]
 input_notes_file = '../output/{}-{}-{}-{}-input_notes'.format(timestamp, output_name, epochs, sequence_length)
 output_notes_file = '../output/{}-{}-{}-{}-output_notes'.format(timestamp, output_name, epochs, sequence_length)
 terminal_output = '../output/{}-{}-{}-{}-terminal.log'.format(timestamp, output_name, epochs, sequence_length)
@@ -90,6 +91,7 @@ def full_execution(weights_file, input_notes_file, midi_files, sequence_length, 
 
     print("Script run time: {}".format(datetime.now() - start_time))
 
+# Keras also has CSVLogger
 class Logger(object):
 
     def __init__(self, terminal_output):

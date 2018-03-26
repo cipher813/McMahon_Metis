@@ -4,13 +4,19 @@ import numpy as np
 import pickle
 import re
 
+from keras import optimizers
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import Dropout
 from keras.layers import LSTM
 from keras.layers import Activation
 from keras.utils import np_utils
-from keras.callbacks import ModelCheckpoint
+from keras.callbacks import ModelCheckpoint, TensorBoard
+
+import pydot
+import graphviz
+from IPython.display import SVG
+from keras.utils.vis_utils import model_to_dot
 
 def weight_generator(midi_files, sequence_length, epochs, batch_size, input_notes_file, weights_file, midi_quantity, timestamp,output_name): # weights file should be None for training
     assert weights_file == None
@@ -112,12 +118,17 @@ def reshape_for_training(network_input, network_output,n_patterns, sequence_leng
 
 def create_network(network_input, n_vocab, weights_file):
     print("\n**LSTM model initializing**")
-    # three layer model
-    model = Sequential()
+    # network input shape (notes - sequence length, sequence_length, 1)
     timesteps = network_input.shape[1]
     data_dim = network_input.shape[2]
+    print("Timesteps: {} Data Dimension: {}".format(timesteps, data_dim))
     first_layer = 512
     drop = 0.3
+    layers = 9 # manually set based on number of layers below
+
+    print("Input nodes: {} Dropout: {}".format(first_layer, drop, layers))
+
+    model = Sequential()
     model.add(LSTM(first_layer, input_shape=(timesteps, data_dim), return_sequences=True))
     model.add(Dropout(drop))
     model.add(LSTM(first_layer, return_sequences=True))
@@ -127,7 +138,10 @@ def create_network(network_input, n_vocab, weights_file):
     model.add(Dropout(drop))
     model.add(Dense(n_vocab)) # based on number of unique system outputs
     model.add(Activation('softmax'))
-    model.compile(loss='categorical_crossentropy',optimizer='rmsprop')
+    SVG(model_to_dot(model, show_shapes=True).create(prog='dot', format='svg'))
+
+    rms = optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay = 0.0)
+    model.compile(loss='categorical_crossentropy',optimizer=rms)
 
     if weights_file:
         model.load_weights(weights_file)
@@ -139,16 +153,19 @@ def create_network(network_input, n_vocab, weights_file):
 
 def train_model(model, network_input_r, network_output_r, epochs, batch_size, timestamp, output_name, sequence_length):
     # saves weights after each epoch
-    check_stats = '{epoch:02d}-{loss:.4f}'
+    check_stats = '{epoch:02d}-{loss:.4f}-{val_loss:.4f}'
     weights_filepath = '../output/{}-weights-'.format(timestamp)
     weights_end = '.hdf5'
     weights_checkpoint = weights_filepath + check_stats + weights_end
-    checkpoint = ModelCheckpoint(weights_checkpoint, monitor='loss',verbose=0, save_best_only=True, mode='min')
+    checkpoint = ModelCheckpoint(weights_checkpoint, monitor='loss',verbose=0, save_best_only=False, mode='min')
     callbacks_list = [checkpoint]
+    # TODO configure validation set to utilize visuals
+    tensorboard = TensorBoard(log_dir='../log', histogram_freq=0, batch_size=batch_size, write_graph=True, write_grads=False, write_images=False, embeddings_freq=0, embeddings_layer_names=None, embeddings_metadata=None)
+
 
     print("Fitting Model. \nNetwork Input Shape: {} Network Output Shape: {}".format(network_input_r.shape,network_output_r.shape))
     print("Epochs: {} Batch Size: {}".format(epochs, batch_size))
-    model.fit(network_input_r, network_output_r, epochs=epochs, batch_size=batch_size, callbacks=callbacks_list)
+    model.fit(network_input_r, network_output_r, epochs=epochs, batch_size=batch_size, callbacks=callbacks_list, validation_split=0.1)
 
     # saves weights upon training completion
     weights_file = '../output/{}-{}-{}-{}-lstm_weights.hdf5'.format(timestamp, output_name, epochs, sequence_length)
