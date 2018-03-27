@@ -1,30 +1,9 @@
-from music21 import converter, instrument, note, chord, stream
-import numpy as np
 import pickle
+import numpy as np
 
-import weight_generator1_2 as wg
+from music21 import note, chord, stream
 
-def midi_generator(notes, sequence_length, epochs, batch_size, timestamp, output_name, weights_file, output_notes_file,notes_generated,sound):
-    assert weights_file != None
-    # repeating function so weights to midi can be derived from notes file alone
-    network_input, network_output, n_patterns, n_vocab, pitchnames = wg.prepare_sequences(notes, sequence_length)
-    # initialize LSTM for midi creation
-    normalized_input = reshape_for_creation(network_input, n_patterns, sequence_length, n_vocab)
-    model = wg.create_network(normalized_input, n_vocab, weights_file)
-    prediction_output = generate_notes(model, network_input, pitchnames,n_vocab,notes_generated)
-    output_notes = create_midi(prediction_output, timestamp, output_name, epochs, sequence_length,sound, output_notes_file)
-    return output_notes
-
-def reshape_for_creation(network_input, n_patterns, sequence_length, n_vocab):
-    print("\n**Preparing sequences for output**")
-
-    # the network input variables below are unshaped (pre-reshaped)
-    normalized_input = np.reshape(network_input, (n_patterns, sequence_length,1)) / float(n_vocab)
-    print("Network Input of length {} is reshaped to normalized input of {}".format(len(network_input),normalized_input.shape))
-    return normalized_input
-
-
-def generate_notes(model, network_input, pitchnames,n_vocab,notes_generated):
+def generate_notes(model, network_input, pitchnames,notes_generated, n_vocab):
     print("\n**Generating notes**")
     # convert integers back to notes/chords
     int_to_note = dict((number, note) for number, note in enumerate(pitchnames))
@@ -54,7 +33,7 @@ def generate_notes(model, network_input, pitchnames,n_vocab,notes_generated):
     return prediction_output
 
 
-def create_midi(prediction_output, timestamp, output_name, epochs, sequence_length, sound, output_notes_file):
+def create_midi(prediction_output, output_tag, sequence_length, sound):
     print("\n**Creating midi**")
     offset = 0
     output_notes = []
@@ -80,9 +59,11 @@ def create_midi(prediction_output, timestamp, output_name, epochs, sequence_leng
 
     print("Generating {} notes stored as {}".format(len(output_notes),type(output_notes)))
     midi_stream = stream.Stream(output_notes)
-    output_file = '../output/{}-{}-{}-{}-lstm_midi.mid'.format(timestamp, output_name, epochs, sequence_length)
+    output_file = output_tag + 'lstm_midi.mid'
     midi_stream.write('midi',fp=output_file)
     print("Midi saved at: {}".format(output_file))
+
+    output_notes_file = output_tag + 'output_notes'
     with open(output_notes_file, 'wb') as f:
         pickle.dump(output_notes, f)
     print("Output notes/chords stored as {} then pickled at {}".format(type(output_notes), output_notes_file))
