@@ -1,11 +1,31 @@
-**To run:**
-In terminal type:
-`python train1_2.py` to train by inputting midi files and outputting a generated midi; or
-`python create1_2.py` to create midi from preexisting weights and notes and outputting generated midi
+# LSTM Music Generator
+Consists of the following files, each saved under their version number in the models folder:
 
-Support files include:
-weight_generator.py for functions pertaining to weight creation; and
-midi_generator.py for functions pertaining to midi creation
+**Run files**
+The model takes in a set of midi music files and generates a unique note/chord pattern in midi output.  This is processed in two phases: (1) Midi input files to trained weights, and (2) Trained weights to midi generated file.  
+
+Midis -> weights -> midi
+
+`midis_to_weights.py` takes in set of midi files and trains weights.
+`weights_to_midi.py` takes the trained weights and generated a unique midi file.
+
+**Support files:**
+`processing.py` contains functions that process notes/chords from midi to embedded numeric format.  
+`neural_network.py` contains the neural network which trains the weights and generates the midi output by "predicting" notes/chords.  
+`generate.py` contains functions which create the midi output.
+`utils.py` contains a logging function for process tracking.  
+
+
+**To run:**
+
+Navigate to the model files in within the model/<version number> filepath.
+
+First, type `python midis_to_weights.py` to train by inputting midi files and outputting a trained set of weights.
+
+Once you have the trained weights file, edit `weights_to_midi.py` with filepaths to the weights file and notes file produced as output to the training phase.  Then run this process in terminal by typing `python weights_to_midi.py`
+
+This will then output the generated midi file.  
+
 
 **Resources:**
 Nayebi, Aran. ["GRUV: Algorithmic Music Generation using Recurrent Neural Networks."](https://www.arxiv.org). Stanford University. 2015.  
