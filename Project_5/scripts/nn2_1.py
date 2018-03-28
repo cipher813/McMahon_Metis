@@ -11,7 +11,7 @@ from keras.callbacks import ModelCheckpoint, TensorBoard
 first_layer = 1024
 drop = 0.3
 
-def create_network(network_input, n_vocab, model_file):
+def create_network(network_input, n_vocab, weight_file=None):
     print("\n**LSTM model initializing**")
     # network input shape (notes - sequence length, sequence_length, 1)
     timesteps = network_input.shape[1] # sequence length
@@ -24,10 +24,10 @@ def create_network(network_input, n_vocab, model_file):
     model = Sequential()
     model.add(LSTM(first_layer, input_shape=(timesteps, data_dim), return_sequences=True))
     model.add(Dropout(drop))
-    # model.add(LSTM(first_layer, return_sequences=True))
-    # model.add(Dropout(drop))
-    # model.add(LSTM(first_layer, return_sequences=True)) # added new layer
-    # model.add(Dropout(drop)) # added new layer
+    model.add(LSTM(first_layer, return_sequences=True))
+    model.add(Dropout(drop))
+    model.add(LSTM(first_layer, return_sequences=True)) # added new layer
+    model.add(Dropout(drop)) # added new layer
     model.add(LSTM(first_layer))
     model.add(Dense(first_layer//2))
     model.add(Dropout(drop))
@@ -38,25 +38,24 @@ def create_network(network_input, n_vocab, model_file):
     model.compile(loss='categorical_crossentropy',optimizer=rms)
 
     # this is a complete model file
-    if model_file:
-        model = load_model(model_file)
-        print("LSTM modelinitialized for midi CREATION with model from {}".format(model_file))
+    if weight_file:
+        weights = model.load_weights(weight_file)
+        print("LSTM modelinitialized for midi CREATION with model from {}".format(weight_file))
     else:
-        print("LSTM model initialized for TRAINING - model being generated (no model file)")
+        print("LSTM model initialized for TRAINING - model being generated (no weights file)")
     return model
 
 
-def load_saved_model(model_file):
-    model = load_model(model_file)
-    return model
+# def load_saved_model(model_file):
+#     model = load_model(model_file)
+#     return model
 
 
 def train_model(model, network_input_r, network_output_r, epochs, batch_size, output_tag, sequence_length):
     # saves model after each epoch
-    check_stats = '{epoch:02d}-{loss:.4f}-{val_loss:.4f}'
-    model_filepath = output_tag + 'saved_model'
-    model_end = '.hdf5'
-    model_checkpoint = model_filepath + check_stats + model_end
+    check_stats = '{epoch:02d}-{loss:.4f}-{val_loss:.4f}-'
+    weight_file = output_tag + check_stats + 'weights.hdf5'
+    model_checkpoint = weight_file
     checkpoint = ModelCheckpoint(model_checkpoint,
                                     monitor='loss',
                                     verbose=0,
@@ -78,7 +77,7 @@ def train_model(model, network_input_r, network_output_r, epochs, batch_size, ou
     model.fit(network_input_r, network_output_r, epochs=epochs, batch_size=batch_size, callbacks=callbacks_list, validation_split=0.1)
 
     # saves model upon training completion
-    model_file = output_tag + 'lstm_model.hdf5'
-    model.save(model_file)
-    print("TRAINING complete - model saved at: {}".format(model_file))
-    return model, model_file
+    # weight_file = output_tag + 'lstm-weights.hdf5'
+    model.save_weights(weight_file)
+    print("TRAINING complete - weights saved at: {}".format(weight_file))
+    return model, weight_file
