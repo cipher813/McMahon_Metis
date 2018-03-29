@@ -5,7 +5,7 @@ from keras.callbacks import ModelCheckpoint, TensorBoard
 
 # TODO add functionality for partially trained model
 
-first_layer = 256
+first_layer = 512
 drop = 0.3
 
 def create_network(network_input, n_vocab, weight_file=None):
@@ -19,7 +19,7 @@ def create_network(network_input, n_vocab, weight_file=None):
     # for LSTM models, return_sequences sb True for all but the last LSTM layer
     # this will input the full sequence rather than a single value
     model = Sequential()
-    model.add(Bidirectional(LSTM(first_layer, dropout=0.3, recurrent_dropout=0.3), input_shape=(timesteps, data_dim)))
+    model.add(Bidirectional(LSTM(first_layer, dropout=drop, recurrent_dropout=drop), input_shape=(timesteps, data_dim)))
     # model.add(Dropout(drop))
     # model.add(Bidirectional(LSTM(first_layer)))#, return_sequences=True)))
     # model.add(Dropout(drop))
