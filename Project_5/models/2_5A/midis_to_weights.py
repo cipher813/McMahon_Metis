@@ -14,14 +14,14 @@ import neural_network as nn
 import generate as cr
 import utils as ut
 
-midi_files = '../../data/Music/Tadpole/CelticMidis/ADEN.MID'
+# midi_files = '../../data/Music/Tadpole/CelticMidis/ADEN.MID'
 # midi_files = '../../data/Music/Tadpole/**/*.MID'
-# midi_files = '../../data/Music/FinalFantasy/*.mid'
+midi_files = '../../data/Music/FinalFantasy/*.mid'
 
 timestamp = re.sub(r'[-: ]','',str(datetime.now()).split('.')[0])[:-2]
 output_name = midi_files.split('/')[-3]
-epochs = 1
-batch_size = 128 # 128 for local; 512 for AWS
+epochs = 200
+batch_size = 512 # 128 for local; 512 for AWS
 sequence_length = 100 # the LSTM RNN will consider this many notes
 output_tag = 'output/{}-{}-{}-{}-'.format(timestamp, output_name, epochs, sequence_length)
 # sound = instrument.Bagpipes()
