@@ -5,8 +5,8 @@ from keras.callbacks import ModelCheckpoint, TensorBoard
 
 # TODO add functionality for partially trained model
 
-first_layer = 1024
-drop = 0.3
+first_layer = 512
+drop = 0.2
 
 def create_network(network_input, n_vocab, weight_file=None):
     print("\n**LSTM model initializing**")
@@ -19,7 +19,9 @@ def create_network(network_input, n_vocab, weight_file=None):
     # for LSTM models, return_sequences sb True for all but the last LSTM layer
     # this will input the full sequence rather than a single value
     model = Sequential()
-    model.add(Bidirectional(LSTM(first_layer, dropout=drop, recurrent_dropout=drop), input_shape=(timesteps, data_dim))) # , return_sequences=True
+    model.add(Bidirectional(LSTM(first_layer, dropout=drop, recurrent_dropout=drop, return_sequences=True), input_shape=(timesteps, data_dim)))
+    model.add(LSTM(first_layer, dropout=drop, recurrent_dropout=drop, return_sequences=True))
+    model.add(LSTM(first_layer, dropout=drop, recurrent_dropout=drop))
     # model.add(Bidirectional(LSTM(first_layer, dropout=drop, recurrent_dropout=drop), input_shape=(timesteps, data_dim)))
     # model.add(Dropout(drop))
     # model.add(Bidirectional(LSTM(first_layer)))#, return_sequences=True)))
@@ -28,7 +30,7 @@ def create_network(network_input, n_vocab, weight_file=None):
     # model.add(Dropout(drop)) # added new layer
     # model.add(LSTM(first_layer))
     # model.add(Dropout(drop)) # added
-    model.add(Dense(first_layer))
+    model.add(Dense(first_layer//2))
     model.add(Dropout(drop))
     model.add(Dense(n_vocab)) # based on number of unique system outputs
     model.add(Activation('softmax'))
