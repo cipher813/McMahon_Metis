@@ -77,7 +77,7 @@ def create_midi(prediction_output, output_tag, sequence_length):
             notes = []
             for current_note in notes_in_chord:
                 new_note = note.Note(int(current_note))
-                new_note.storedInstrument = instrument.Piano()
+                new_note.storedInstrument = instrument.Flute()
                 notes.append(new_note)
             new_chord = chord.Chord(notes)
             new_chord.offset = offset
@@ -85,7 +85,7 @@ def create_midi(prediction_output, output_tag, sequence_length):
         else:
             new_note = note.Note(pattern)
             new_note.offset = offset
-            new_note.storedInstrument = instrument.Piano()
+            new_note.storedInstrument = instrument.Flute()
 
             output_notes.append(new_note)
         offset += 0.5
