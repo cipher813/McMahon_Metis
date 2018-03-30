@@ -1,10 +1,11 @@
 from keras import optimizers
 from keras.models import Sequential, load_model
-from keras.layers import Bidirectional, Dense, Dropout, LSTM, Activation, GRU, TimeDistributed
+from keras.layers import Bidirectional, Dense, Dropout, LSTM, Activation
 from keras.callbacks import ModelCheckpoint, TensorBoard
 
 first_layer = 512
-drop = 0.2
+drop = 0.3
+rdrop = 0.3
 
 def create_network(network_input, n_vocab, weight_file=None):
     print("\n**LSTM model initializing**")
@@ -17,12 +18,10 @@ def create_network(network_input, n_vocab, weight_file=None):
     # for LSTM models, return_sequences sb True for all but the last LSTM layer
     # this will input the full sequence rather than a single value
     model = Sequential()
-    model.add(LSTM(first_layer, dropout=drop, recurrent_dropout=drop, return_sequences=True), input_shape=(timesteps, data_dim))
-    model.add(LSTM(first_layer, dropout=drop, recurrent_dropout=drop, return_sequences=True))
-    model.add(LSTM(first_layer, dropout=drop, recurrent_dropout=drop))
-    model.add(Dense(first_layer//2))
+    model.add(Bidirectional(LSTM(first_layer, dropout=drop, recurrent_dropout=rdrop), input_shape=(timesteps, data_dim)))
+    model.add(Dense(first_layer))
     model.add(Dropout(drop))
-    model.add(Dense(n_vocab)) # based on number of unique system outputs
+    model.add(Dense(n_vocab)) # based on number of unique notes
     model.add(Activation('softmax'))
 
     rms = optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=None, decay = 0.0)
@@ -59,7 +58,7 @@ def train_model(model, network_input_r, network_output_r, epochs, batch_size, ou
 
     print("Fitting Model. \nNetwork Input Shape: {} Network Output Shape: {}".format(network_input_r.shape,network_output_r.shape))
     print("Epochs: {} Batch Size: {}".format(epochs, batch_size))
-    model.fit(network_input_r, network_output_r, epochs=epochs, batch_size=batch_size, callbacks=callbacks_list, validation_split=0.2)
+    model.fit(network_input_r, network_output_r, epochs=epochs, batch_size=batch_size, callbacks=callbacks_list, validation_split=0.1)
 
     # saves model upon training completion
     weight_file = output_tag + 'final_weights.hdf5'

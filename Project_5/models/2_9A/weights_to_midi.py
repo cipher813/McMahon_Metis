@@ -12,14 +12,14 @@ import neural_network as nn
 import generate as cr
 import utils as ut
 
-weight_file = 'output/201803282154-Music-200-100-weight-109-1.2056-8.4236.hdf5'
-note_file = 'output/201803282154-Music-200-100-input_notes'
+weight_file = 'output/201803291507-Tadpole-1-20-weight-01-2.5022-2.4358.hdf5'
+note_file = 'output/201803291507-Tadpole-1-20-input_notes'
 
 timestamp = re.sub(r'[-: ]','',str(datetime.now()).split('.')[0])[:-2]
 # output_name = midi_files.split('/')[-3]
 # epochs = 200
 # batch_size = 128
-sequence_length = 100 # the LSTM RNN will consider this many notes
+sequence_length = 200 # the LSTM RNN will consider this many notes
 output_tag = 'output/{}-{}-'.format(timestamp, sequence_length)
 notes_generated = 500
 
