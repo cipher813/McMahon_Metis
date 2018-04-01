@@ -5,17 +5,17 @@ from music21 import note, chord, stream, instrument
 
 
 # sample function from Keras Nietsche example
-# def sample(preds, temperature=1.0):
-#     # helper function to sample an index from a probability array
-#     preds = np.asarray(preds).astype('float64')
-#     preds = np.log(preds) / temperature
-#     exp_preds = np.exp(preds)
-#     preds = exp_preds / np.sum(exp_preds)
-#     # probas = np.random.multinomial(1, preds, 1)
-#     return np.argmax(preds)
+def sample(preds, temperature=1.0):
+    # helper function to sample an index from a probability array
+    preds = np.asarray(preds).astype('float64')
+    preds = np.log(preds) / temperature
+    exp_preds = np.exp(preds)
+    preds = exp_preds / np.sum(exp_preds)
+    probas = np.random.multinomial(1, preds, 1)
+    return np.argmax(probas)
 
 
-def generate_notes(model, network_input, pitchnames,notes_generated, n_vocab):
+def generate_notes(model, network_input, pitchnames,notes_generated, n_vocab, temperature):
     # diversity_list = [0.2,0.5,1.0,1.2]
     print("\n**Generating notes**")
     # convert integers back to notes/chords
@@ -47,10 +47,10 @@ def generate_notes(model, network_input, pitchnames,notes_generated, n_vocab):
         # pattern = sample(pattern, diversity)
         prediction_input = np.reshape(pattern, (1,len(pattern),1)) / float(n_vocab)
 
-        prediction = model.predict(prediction_input, verbose=0)
+        prediction = model.predict(prediction_input, verbose=0)[0]
         # diversity = diversity_list[np.random.randint(0,4)]
-        # index = sample(prediction,diversity)
-        index = np.argmax(prediction)
+        index = sample(prediction,temperature)
+        # index = np.argmax(prediction)
         result = int_to_note[index]
 
         # prediction_output += result
@@ -65,7 +65,7 @@ def generate_notes(model, network_input, pitchnames,notes_generated, n_vocab):
     return prediction_output
 
 
-def create_midi(prediction_output, output_tag, sequence_length):
+def create_midi(prediction_output, output_tag, sequence_length,offset):
     print("\n**Creating midi**")
     offset = 0
     output_notes = []
@@ -88,7 +88,7 @@ def create_midi(prediction_output, output_tag, sequence_length):
             new_note.storedInstrument = instrument.Bagpipes()
 
             output_notes.append(new_note)
-        offset += 0.5
+        offset += offset #0.5
 
     print("Generating {} notes stored as {}".format(len(output_notes),type(output_notes)))
     midi_stream = stream.Stream(output_notes)

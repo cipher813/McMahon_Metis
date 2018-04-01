@@ -24,14 +24,14 @@ output_tag = 'output/{}-{}-'.format(timestamp, sequence_length)
 notes_generated = 500
 
 # convert fully trained weights to midi file
-def weights_to_midi(note_file, sequence_length, weight_file):
+def weights_to_midi(note_file, sequence_length, weight_file, temperature, offset):
     with open(note_file, 'rb') as filepath:
         notes = pickle.load(filepath)
     network_input, network_output, n_patterns, n_vocab, pitchnames = pr.prepare_sequences(notes, sequence_length)
     normalized_input = pr.reshape_for_creation(network_input, n_patterns, sequence_length, n_vocab)
     model = nn.create_network(normalized_input, n_vocab, weight_file)
-    prediction_output= cr.generate_notes(model, network_input, pitchnames,notes_generated, n_vocab)
-    output_notes = cr.create_midi(prediction_output, output_tag, sequence_length)
+    prediction_output= cr.generate_notes(model, network_input, pitchnames,notes_generated, n_vocab, temperature)
+    output_notes = cr.create_midi(prediction_output, output_tag, sequence_length, offset)
     return output_notes
 
 
