@@ -65,7 +65,7 @@ def generate_notes(model, network_input, pitchnames,notes_generated, n_vocab, te
     return prediction_output
 
 
-def create_midi(prediction_output, output_tag, sequence_length,offset):
+def create_midi(prediction_output, output_tag, sequence_length,offset_adj, sound):
     print("\n**Creating midi**")
     offset = 0
     output_notes = []
@@ -77,7 +77,7 @@ def create_midi(prediction_output, output_tag, sequence_length,offset):
             notes = []
             for current_note in notes_in_chord:
                 new_note = note.Note(int(current_note))
-                new_note.storedInstrument = instrument.Bagpipes()
+                new_note.storedInstrument = sound
                 notes.append(new_note)
             new_chord = chord.Chord(notes)
             new_chord.offset = offset
@@ -85,10 +85,10 @@ def create_midi(prediction_output, output_tag, sequence_length,offset):
         else:
             new_note = note.Note(pattern)
             new_note.offset = offset
-            new_note.storedInstrument = instrument.Bagpipes()
+            new_note.storedInstrument = sound
 
             output_notes.append(new_note)
-        offset += offset #0.5
+        offset += offset_adj #0.5
 
     print("Generating {} notes stored as {}".format(len(output_notes),type(output_notes)))
     midi_stream = stream.Stream(output_notes)
