@@ -11,6 +11,8 @@ from keras.layers import Bidirectional, Dense, Dropout, LSTM, Activation
 from keras.callbacks import ModelCheckpoint, TensorBoard, History, Callback
 from keras.utils import np_utils
 
+# from keras.layers.core import K
+
 
 # PROCESSING
 
@@ -114,8 +116,11 @@ def reshape_for_creation(network_input, n_patterns, sequence_length, n_vocab):
 
 # NEURAL NETWORK
 
+
 first_layer = 512
 drop = 0.5
+
+# K.set_learning_phase(0)
 
 def create_network(network_input, n_vocab, weight_file):
     print("\n**LSTM model initializing**")
@@ -130,10 +135,11 @@ def create_network(network_input, n_vocab, weight_file):
     # for LSTM models, return_sequences sb True for all but the last LSTM layer
     # this will input the full sequence rather than a single value
     model = Sequential()
-    model.add(Bidirectional(LSTM(first_layer), input_shape=(timesteps, data_dim)))
+    model.add(Bidirectional(LSTM(first_layer, recurrent_dropout=drop), input_shape=(timesteps, data_dim)))
     model.add(Dense(first_layer))
     model.add(Dropout(drop))
     model.add(Dense(n_vocab)) # based on number of unique notes
+    model.add(Dropout(drop))
     model.add(Activation('softmax'))
 
     try:
@@ -170,7 +176,7 @@ def train_model(model, network_input_r, network_output_r, epochs, batch_size, ou
     checkpoint = ModelCheckpoint(weight_checkpoint,
                                     monitor='val_loss',
                                     verbose=1,
-                                    save_best_only=True,
+                                    save_best_only=False,
                                     mode='min') #, period=1)
 
     # https://stackoverflow.com/questions/42112260/how-do-i-use-the-tensorboard-callback-of-keras?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
@@ -197,6 +203,8 @@ def train_model(model, network_input_r, network_output_r, epochs, batch_size, ou
     model.save_weights(weight_file)
     print("TRAINING complete - weights saved at: {}".format(weight_file))
     return model, weight_file, history
+
+
 
 
 # CREATE MIDI
