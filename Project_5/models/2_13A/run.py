@@ -10,7 +10,7 @@ from music21 import instrument
 
 import functions as fxn
 
-midi_files = '../../data/Music/Tadpole/**/.MID'
+midi_files = '../../data/Music/Tadpole/**/*.MID'
 # midi_files = '../../audio_output/2_4L_201803290654-100-lstm_midi.mid' # for testing
 # midi_files = '../../data/Music/MidiWorld/Dance/*.mid'
 # midi_files = '../../data/Music/FinalFantasy/*.mid'
