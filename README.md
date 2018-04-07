@@ -1,7 +1,7 @@
 # Brian's Data Mine
 
 ## Metis Data Science Bootcamp, Winter 2018
-[AI Jukebox: Creating Music with Neural Networks](https://medium.com/@cipher813/ai-jukebox-creating-music-with-neural-networks-1d9585c4d649).
+[AI Jukebox: Creating Music with Neural Networks, 5 April 2018](https://medium.com/@cipher813/ai-jukebox-creating-music-with-neural-networks-1d9585c4d649).
 
 [Preventing Malicious Use of AI, 26 February 2018](https://medium.com/@cipher813/preventing-malicious-use-of-ai-925cba77916b).
 
