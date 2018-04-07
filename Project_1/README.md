@@ -1,2 +1,2 @@
-# [Analyzing NYC MTA subway and demographic data to optimize street team deployment](https://medium.com/@cipher813/analyzing-nyc-subway-and-demographic-data-to-optimize-street-team-deployment-2614522bd83e)
-19 January 2018
+# Optimizing Street Team Deployment
+This repo has been moved [here.](https://github.com/cipher813/street_team_optimize)
