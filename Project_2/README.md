@@ -1,2 +1,2 @@
-# [Bitcoin Linear Regression: Correlation Exploration](https://medium.com/@cipher813/bitcoin-linear-regression-correlation-exploration-601d629c61c)
-2 February 2018
+# Bitcoin Linear Regression: Correlation Exploration
+This repo has been moved [here.](https://github.com/cipher813/bitcoin_prediction)
